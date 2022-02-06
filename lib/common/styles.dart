@@ -1,9 +1,8 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-final Color primaryColor = Color(0xff1D3557);
-final Color secondaryColor = Color(0xff457B9D);
+const Color primaryColor = Color(0xff1D3557);
+const Color secondaryColor = Color(0xff457B9D);
 
 final TextTheme myTextTheme = TextTheme(
   headline1: GoogleFonts.merriweather(fontSize: 92, fontWeight: FontWeight.w300, letterSpacing: -1.5),

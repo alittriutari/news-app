@@ -2,11 +2,11 @@ import 'dart:io';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:news_app/data/model/article.dart';
+import 'package:news_app/data/api/api_service.dart';
+import 'package:news_app/provider/news_provider.dart';
 import 'package:news_app/ui/article_list_page.dart';
-import 'package:news_app/ui/detail_page.dart';
 import 'package:news_app/ui/settings_page.dart';
-import 'package:news_app/widget/platform_widget.dart';
+import 'package:provider/provider.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -20,8 +20,8 @@ class _HomePageState extends State<HomePage> {
   int bottomNavIndex = 0;
 
   final List<Widget> _listWidget = [
-    ArticleListPage(),
-    SettingsPage(),
+    ChangeNotifierProvider<NewsProvider>(create: (_) => NewsProvider(apiService: ApiService()), child: const ArticleListPage()),
+    const SettingsPage(),
   ];
 
   final List<BottomNavigationBarItem> _bottomNavBarItems = [
@@ -48,17 +48,6 @@ class _HomePageState extends State<HomePage> {
           });
         },
       ),
-    );
-  }
-
-  Widget _buildIos(BuildContext context) {
-    return CupertinoTabScaffold(
-      tabBar: CupertinoTabBar(
-        items: _bottomNavBarItems,
-      ),
-      tabBuilder: (context, index) {
-        return _listWidget[index];
-      },
     );
   }
 }
