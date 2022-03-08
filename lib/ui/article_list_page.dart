@@ -4,6 +4,7 @@ import 'package:news_app/provider/news_provider.dart';
 import 'package:news_app/ui/card_article.dart';
 import 'package:news_app/widget/platform_widget.dart';
 import 'package:provider/provider.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class ArticleListPage extends StatelessWidget {
   const ArticleListPage({Key? key}) : super(key: key);
@@ -14,13 +15,13 @@ class ArticleListPage extends StatelessWidget {
   }
 
   Widget _buildAndroid(BuildContext context) {
-    return Scaffold(appBar: AppBar(title: const Text('News App')), body: _builtList(context));
+    return Scaffold(appBar: AppBar(title: Text(AppLocalizations.of(context)!.titleApp)), body: _builtList(context));
   }
 
   Widget _buildIos(BuildContext context) {
     return CupertinoPageScaffold(
-      navigationBar: const CupertinoNavigationBar(
-        middle: Text('News App'),
+      navigationBar: CupertinoNavigationBar(
+        middle: Text(AppLocalizations.of(context)!.titleApp),
         transitionBetweenRoutes: false,
       ),
       child: _builtList(context),

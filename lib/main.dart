@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:news_app/data/model/article.dart';
 import 'package:news_app/ui/article_webview.dart';
 import 'package:news_app/ui/detail_page.dart';
 import 'package:news_app/ui/home_page.dart';
 import 'package:news_app/common/styles.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 void main() {
   runApp(const MyApp());
@@ -39,6 +41,13 @@ class MyApp extends StatelessWidget {
               url: ModalRoute.of(context)?.settings.arguments as String,
             ),
       },
+      localizationsDelegates: [
+        AppLocalizations.delegate,
+        GlobalMaterialLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
+        GlobalCupertinoLocalizations.delegate
+      ],
+      supportedLocales: [Locale('id', ''), Locale('en', '')],
     );
   }
 }
